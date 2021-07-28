@@ -1,3 +1,2 @@
 # MyTestRepo
-This is a test repository
-This is the new line
+This is a new test repository
