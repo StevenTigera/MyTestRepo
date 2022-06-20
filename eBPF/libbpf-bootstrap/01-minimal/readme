@@ -5,3 +5,17 @@ cd ~/Github/StevenTigera/ebpf-hello-world
 git clone https://github.com/libbpf/libbpf
 cd libbpf/src/
 make BUILD_STATIC_ONLY=1 OBJDIR=../build/libbpf DESTDIR=../build INCLUDEDIR= LIBDIR= UAPIDIR= install
+
+cd ../..
+bpftool btf dump file /sys/kernel/btf/vmlinux format c > vmlinux.h
+
+IMPORTANT
+vmlinux.h MUST be before the bpf header files!
+
+clang -g -O2 -target bpf -D__TARGET_ARCH_x86_64 -I . -c minimal.bpf.c -o minimal.bpf.o
+bpftool gen skeleton minimal.bpf.o > minimal.skel.h
+
+clang -g -O2 -Wall -I . -c minimal.c -o minimal.o
+clang -Wall -O2 -g hello.o libbpf/build/libbpf.a -lelf -lz -o hello
+sudo su
+./hello
