@@ -1,0 +1,7 @@
+readme
+22/06/2022
+
+cd ~/Github/StevenTigera/ebpf-hello-world
+git clone https://github.com/libbpf/libbpf
+cd libbpf/src/
+make BUILD_STATIC_ONLY=1 OBJDIR=../build/libbpf DESTDIR=../build INCLUDEDIR= LIBDIR= UAPIDIR= install
