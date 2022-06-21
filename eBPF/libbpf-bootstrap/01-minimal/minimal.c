@@ -1,4 +1,4 @@
-//#include "minimal.skel.h"
+#include "minimal.skel.h"
 #include <unistd.h>
 #include <sys/resource.h>
 #include <bpf/libbpf.h>
