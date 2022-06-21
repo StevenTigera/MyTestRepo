@@ -19,4 +19,29 @@ crd/bases/cache..yaml
 
 04.
 code changes
-make
+memcached_types.go
+make manifests
+
+export IMG="g/td/c/t/s/example.com/memcached-operator:v0.0.4"
+make docker-build
+
+docker tag example.com/memcached-operator:v0.0.4 g/td/c/t/s/example.com/memcached-operator:v0.0.4
+docker push g/td/c/t/s/example.com/memcached-operator:v0.0.4
+
+make install
+k get Memcached
+I had an entry
+memcached-sample
+believe this camer from here:
+cache_v1alpha1_memcached.yaml
+
+OR to run locally
+make install run
+make deploy IMG=g/td/c/t/s/example.com/memcached-operator:v0.0.4
+
+works but got make error at the end - not sure if this is important
+make: *** No rule to make target 'gcr.io/tigera-dev/cnx/tigera/stevepro/example.com/memcached-operator:v0.0.3'.  Stop.
+
+
+I had an error with pull image down on deploy because there was no secret to pull from private container registry
+I tried to create the secret and redo but still error out

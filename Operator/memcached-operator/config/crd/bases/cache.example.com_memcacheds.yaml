@@ -35,9 +35,8 @@ spec:
           spec:
             description: MemcachedSpec defines the desired state of Memcached
             properties:
-              foo:
-                description: Foo is an example field of Memcached. Edit memcached_types.go
-                  to remove/update
+              image:
+                description: Image is the container image of my application
                 type: string
             type: object
           status:
