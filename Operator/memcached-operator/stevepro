@@ -45,3 +45,12 @@ make: *** No rule to make target 'gcr.io/tigera-dev/cnx/tigera/stevepro/example.
 
 I had an error with pull image down on deploy because there was no secret to pull from private container registry
 I tried to create the secret and redo but still error out
+
+
+BUT can apply resource
+e.g.
+k get memcacheds.cache.example.com -o yaml
+No resources
+
+k apply -f config/samples/cache_v1alpha1_memcached.yaml
+memcached-sample   95ss
