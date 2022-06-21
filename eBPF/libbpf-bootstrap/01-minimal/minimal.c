@@ -1,15 +1,14 @@
-#include "minimal.skel.h"
-#include <stdio.h>
+//#include "minimal.skel.h"
 #include <unistd.h>
 #include <sys/resource.h>
 #include <bpf/libbpf.h>
 
-static int libbpf_print_fn(enum libbpf_print_level level, const char *format, va_list args)
+static int libbpf_print_fn(enum libbpf_print_level level,  const char *format, va_list args)
 {
 	return vfprintf(stderr, format, args);
 }
 
-int main( int argc, char **argv)
+int main(int argc, char **argv)
 {
 	struct minimal_bpf *skel;
 	int err;
@@ -26,21 +25,21 @@ int main( int argc, char **argv)
 	}
 
 	libbpf_set_strict_mode(LIBBPF_STRICT_ALL);
-	// Set up libbpf errors and debug info callback.
+	// Set up libbpf errors and debug info callback
 	libbpf_set_print(libbpf_print_fn);
 
-	// Open BPF applicaiton
+	// Open BPF application
 	skel = minimal_bpf__open();
-	if (skel)
+	if (!skel)
 	{
-		fprintf(stderr, "Failed to open BPF sekeleton!\n");
+		fprintf(stderr, "Failed to open BPF skeleton\n");
 		return 1;
 	}
 
 	// Ensure BPF program only handles write() syscalls from our process
 	skel->bss->my_pid = getpid();
 
-	// Load & verify BPF programs
+	// Load and verify BPF programs
 	err = minimal_bpf__load(skel);
 	if (err)
 	{
@@ -56,17 +55,15 @@ int main( int argc, char **argv)
 		goto cleanup;
 	}
 
-	printf("Success...");
-
+	printf("Successfully stated stevepro!  Run `sudo cat `/sys/kernel/debug/tracing/trace_pipe`");
 	for (;;)
 	{
-		// Trigger the BPF program
-		fprintf(stderr, ".");
+		// Trigger our BPF program
+		fprintf(stderr, "-");
 		sleep(1);
 	}
 
 cleanup:
-
 	minimal_bpf__destroy(skel);
-	return err;
+	return 0;
 }
