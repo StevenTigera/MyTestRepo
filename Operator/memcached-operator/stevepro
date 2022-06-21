@@ -5,11 +5,11 @@ stevepro readme
 mkdir memcached-operator
 cd memcached-operator
 operator-sdk init --domain example.com --repo github.com/example/memcached-operator
-make
+make | commit | push
 
 02.
 operator-sdk create api --group cache --version v1alpha1 --kind Memcached --resource --controller
-
+make | commit | push
 
 03.
 make manifests
