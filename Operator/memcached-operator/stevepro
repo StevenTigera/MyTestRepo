@@ -9,3 +9,7 @@ operator-sdk init --domain example.com --repo github.com/example/memcached-opera
 
 02.
 operator-sdk create api --group cache --version v1alpha1 --kind Memcached --resource --controller
+
+
+03.
+make manifests
