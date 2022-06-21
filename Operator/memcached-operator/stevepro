@@ -1,0 +1,22 @@
+stevepro readme
+21-Jun-2022
+
+01.
+mkdir memcached-operator
+cd memcached-operator
+operator-sdk init --domain example.com --repo github.com/example/memcached-operator
+make
+
+02.
+operator-sdk create api --group cache --version v1alpha1 --kind Memcached --resource --controller
+
+
+03.
+make manifests
+config/rbac/role.yaml
+crd/bases/cache..yaml
+
+
+04.
+code changes
+make
