@@ -15,3 +15,8 @@ operator-sdk create api --group cache --version v1alpha1 --kind Memcached --reso
 make manifests
 config/rbac/role.yaml
 crd/bases/cache..yaml
+
+
+04.
+code changes
+make

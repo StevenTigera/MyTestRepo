@@ -28,14 +28,15 @@ type MemcachedSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of Memcached. Edit memcached_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	// Image is the container image of my application
+	Image string `json:"image,omitempty"`
 }
 
 // MemcachedStatus defines the observed state of Memcached
 type MemcachedStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+	DeploymentName string `json:"deploymentName,omitempty"
 }
 
 //+kubebuilder:object:root=true
