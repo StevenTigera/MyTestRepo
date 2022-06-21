@@ -1,0 +1,7 @@
+stevepro readme
+21-Jun-2022
+
+01.
+mkdir memcached-operator
+cd memcached-operator
+operator-sdk init --domain example.com --repo github.com/example/memcached-operator
