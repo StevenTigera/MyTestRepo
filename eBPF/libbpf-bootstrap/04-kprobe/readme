@@ -12,9 +12,9 @@ bpftool btf dump file /sys/kernel/btf/vmlinux format c > vmlinux.h
 IMPORTANT
 vmlinux.h MUST be before the bpf header files!
 
-rm minimal.bpf.o && rm minimal.skel.h
-clang -g -O2 -target bpf -D__TARGET_ARCH_x86_64 -I . -c XYZ.bpf.c -o XYZ.bpf.o
-bpftool gen skeleton minimal.bpf.o > minimal.skel.h
+rm kprobe.bpf.o && rm kprobe.skel.h
+clang -g -O2 -target bpf -D__TARGET_ARCH_x86_64 -I . -c kprobe.bpf.c -o kprobe.bpf.o
+bpftool gen skeleton kprobe.bpf.o > kprobe.skel.h
 
 clang -g -O2 -Wall -I . -c XYZ.c -o XYZ.o
 clang -Wall -O2 -g X.o libbpf/build/libbpf.a -lelf -lz -o hello
