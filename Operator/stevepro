@@ -5,6 +5,7 @@ stevepro readme
 https://kubebyexample.com/en/learning-paths/operator-framework/operator-sdk-go/initialize-and-create-api
 
 KUBECONFIG
+stevepro-operator-test
 
 kubectl create namespace myproject
 kubectl config set-context --current --namespace=myproject
@@ -13,6 +14,34 @@ mkdir -p xx-memcached-operator
 cd xx-memcached-operator
 
 operator-sdk init --domain example.com --repo github.com/example/memcached-operator
+
+Launch Goland
+go mod tidy
+
+
+cat config/crd/bases/cache.example.com_memcacheds.yaml
+kubectl apply -f config/crd/bases/cache.example.com_memcacheds.yaml
+
+CRD now in cluster
+k api-resources | grep mem
+
+memcacheds                                                   cache.example.com/v1alpha1             true         Memcached
+
+
+
+
+Errors
+
+
+operator-sdk create api --group cache --version v1alpha1 --kind Memcached --resource --controller
+go mod tidy
+
+
+Disable check
+
+make generate
+make manifests
+
 
 21-Jun-2022
 
