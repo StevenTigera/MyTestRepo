@@ -1,4 +1,19 @@
 stevepro readme
+27-Jun-2022
+
+
+https://kubebyexample.com/en/learning-paths/operator-framework/operator-sdk-go/initialize-and-create-api
+
+KUBECONFIG
+
+kubectl create namespace myproject
+kubectl config set-context --current --namespace=myproject
+
+mkdir -p xx-memcached-operator
+cd xx-memcached-operator
+
+operator-sdk init --domain example.com --repo github.com/example/memcached-operator
+
 21-Jun-2022
 
 01.
