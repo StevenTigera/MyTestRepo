@@ -28,7 +28,27 @@ k api-resources | grep mem
 memcacheds                                                   cache.example.com/v1alpha1             true         Memcached
 
 
+kubectl get crd memcacheds.cache.example.com -o yaml
 
+
+UPDATE
+CR	custom resource
+
+samples
+~/GitHub/StevenTigera5/MyTestRepo/Operator/xx-memcached-operator/config/samples
+
+kubectl config set-context --current --namespace=myproject
+kubectl get memcached memcached-sample -o yaml
+
+kubectl config set-context --current --namespace=myproject
+kubectl create -f config/samples/cache_v1alpha1_memcached.yaml
+kubectl get memcached memcached-sample -o yaml
+
+kubectl patch memcached memcached-sample --type='json' -p '[{"op": "replace", "path": "/spec/size", "value":5}]'
+
+
+Cleanup
+kubectl delete memcached memcached-sample
 
 Errors
 
