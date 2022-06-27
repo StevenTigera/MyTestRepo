@@ -13,11 +13,14 @@ kubectl config set-context --current --namespace=myproject
 mkdir -p xx-memcached-operator
 cd xx-memcached-operator
 
+Create repo
 operator-sdk init --domain example.com --repo github.com/example/memcached-operator
 
 Launch Goland
 go mod tidy
 
+Create resource
+operator-sdk create api --group cache --version v1alpha1 --kind Memcached --resource --controller
 
 cat config/crd/bases/cache.example.com_memcacheds.yaml
 kubectl apply -f config/crd/bases/cache.example.com_memcacheds.yaml
